@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Static-Comp-Challenge-</title>
+    <meta charset="utf-8">
+    <meta name="viewport" width="width-device-width,  initial-scale=1" />
+    <link href="reset.css" rel="stylesheet" type="text/css" />
+    <link href="main.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <section>
+    <aside id="lg-profile-img">
+    </aside>
+    <section id="main">
+      <article class="all-boxes box-main">
+        <h2>kerry washington</h2>
+        <p>I'm a graphic designer. Coder & Entrepreneur.</p>
+        <p>Take a look at my portfolio to see what I was working on.</p>
+        <button><img class="x-small-btn-img" src="images/download.svg" />resume</button>
+        <button><img class="x-small-btn-img" src="images/info.svg" />contact</button>
+      </article>
+      <article class="all-boxes boxes2-7 box-profile">
+        <figure><a href="#"><img class="icon-img" src="images/profile.svg"/></a>
+          <figcaption>profile</figcaption>
+        </figure>
+      </article>
+      <article class="all-boxes boxes2-7 box-experience">
+        <figure><a href="#"><img class="icon-img" src="images/experience.svg" alt="icon image" /></a>
+          <figcaption>experience</figcaption>
+        </figure>
+      </article>
+      <article class="all-boxes boxes2-7 box-education">
+        <figure><a href="#"><img class="icon-img" src="images/education.svg" alt="icon image" /></a>
+          <figcaption>education</figcaption>
+        </figure>
+      </article>
+      <article class="all-boxes boxes2-7 box-blog">
+        <figure><a href="#"><img class="icon-img" src="images/blog.svg" alt="icon image" /></a>
+          <figcaption>blog</figcaption>
+        </figure>
+      </article>
+      <article class="all-boxes boxes2-7 box-social-menu">
+        <figure><a href="#"><img class="icon-img" src="images/social.svg" /></a>
+          <figcaption>social menu</figcaption>
+        </figure>
+      </article>
+      <article class="all-boxes boxes2-7 box-contact">
+        <figure><a href="#"><img class="icon-img" src="images/email.svg" /></a>
+          <figcaption>contact</figcaption>
+        </figure>
+      </article>
+      <article class="all-boxes boxes2-7 box-portfolio">
+        <figure><a href="#"><img class="icon-img" src="images/portfolio.svg" /></a>
+          <figcaption>portfolio</figcaption>
+        </figure>
+      </article>
+    </section><!--END MAIN-->
+    <aside id="right-img">
+    </aside>
+  </section>
+  </body>
+</html>
