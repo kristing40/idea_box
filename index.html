@@ -9,8 +9,25 @@
   </head>
   <body>
     <main>
-      <section role="input area">
+      <section id="input-area" role="input area">
         <h1><span id="idea-color">idea</span>box</h1>
+        <input type="text" id="title-input" class="input-field" placeholder="Title">
+        <textarea type="text" id="body-input" class="input-field" placeholder="Body"></textarea>
+        <input type="button" id="save-btn" class="input-field" value="save">
+      </section>
+      <section id="output-area" role="output area">
+        <input type="text" id="search-field" placeholder="Search">
+        <section id="display-area">
+          <article class="idea-card">
+            <h3>Title</h3>
+            <div id="delete-btn" class="vote"></div>
+            <p>This is the body content area.</p>
+            <div id="upvote" class="vote"></div>
+            <div id="downvote" class="vote"></div>
+            <p>quality:</p>
+
+          </article>
+        </section>
       </section>
     </main>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
