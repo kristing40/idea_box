@@ -6,30 +6,30 @@
     <meta viewport="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400|Roboto+Slab:700" rel="stylesheet">
   </head>
   <body>
-    <main>
+    <section class="input-area-container" role="input area container">
       <section id="input-area" role="input area">
         <h1><span id="idea-color">idea</span>box</h1>
         <input type="text" id="title-input" class="input-field" placeholder="Title">
-        <textarea type="text" id="body-input" class="input-field" placeholder="Body"></textarea>
+        <textarea type="text" id="body-input" class="input-field" placeholder="Body" rows="5"></textarea>
         <input type="button" id="save-btn" class="input-field" value="save">
       </section>
+    </section>
       <section id="output-area" role="output area">
         <input type="text" id="search-field" class="input-field" placeholder="Search">
         <section id="display-area">
           <article class="idea-card">
             <h3>Title</h3>
             <div id="delete-btn" class="vote"></div>
-            <p>This is the body content area.</p>
+            <p class="card-body-text">This is the body content area.</p>
             <div id="upvote" class="vote"></div>
             <div id="downvote" class="vote"></div>
-            <p>quality:</p>
-
+            <p class="ranking">quality:</p>
           </article>
         </section>
       </section>
-    </main>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="scripts/idea-box.js"></script>
   </body>
