@@ -9,7 +9,8 @@ $('#save-btn').on('click', function() {
 	var quality = "swill";
 	var newIdea = new CreateIdea(cardId, title, body, quality);
 	ideaCard(newIdea);
-
+	ideaArray.push(newIdea);
+	console.log(ideaArray);
   //  a new idea with the provided title and body should appear in the $('#ouput-area') from this event listener
   //  1. store title in variable from $('#title-input').val();
   //  2. store body text in variable from $('#body-input').val();
@@ -37,4 +38,12 @@ function ideaCard(newIdea) {
 		<div id="downvote" class="vote"></div>
 		<p class="ranking">quality:</p>
 	</article>`)
+}
+
+function addToLocalStorage(ideaArray) {
+	var stringifiedArray = JSON.stringify(ideaArray);
+	localStorage.setItem('cardId',stringifiedArray);
+  store uniqueId in var create unique id can use dateObj
+  stringify title and body text for localStorage
+  store title and body text in localStorage with unique id
 }
