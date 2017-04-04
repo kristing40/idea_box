@@ -8,11 +8,11 @@ $('#save-btn').on('click', function() {
 	var cardId = Date.now();
 	var quality = "swill";
 	var newIdea = new CreateIdea(cardId, title, body, quality);
-	ideaCard(newIdea);
 	ideaArray.push(newIdea);
-	console.log(ideaArray);
+	ideaCard(ideaArray);
+	// console.log(ideaArray);
 	addToLocalStorage(ideaArray);
-  //  5. call clearFields(title, body)
+	clearFields();
   });
 
 
@@ -23,18 +23,28 @@ function CreateIdea(cardId, title, body, quality) {
 	this.quality = quality;
 }
 
-function ideaCard(newIdea) {
-  $('#display-area').append(`<article class="idea-card ${newIdea.cardId}">
-		<h3 contenteditable="true">${newIdea.title}</h3>
+function ideaCard(ideaArray) {
+	$('#display-area').html('');
+	ideaArray.forEach(function(idea){
+		$('#display-area').append(`<article class="idea-card ${idea.cardId}">
+		<h3 contenteditable="true">${idea.title}</h3>
 		<div id="delete-btn" class="vote"></div>
-		<p class="card-body-text" contenteditable="true">${newIdea.body}</p>
+		<p class="card-body-text" contenteditable="true">${idea.body}</p>
 		<div id="upvote" class="vote"></div>
 		<div id="downvote" class="vote"></div>
-		<p class="ranking">quality:${newIdea.quality}</p>
-	</article>`)
+		<p class="ranking">quality:${idea.quality}</p>
+		</article>`);
+	});
 };
 
+function clearFields() {
+	$('#title-input, #body-input').val("");
+  // page should be persisted on page reload
+}
+
 function addToLocalStorage(ideaArray) {
+	//clear local storage
+	localStorage.clear();
 	var stringifiedArray = JSON.stringify(ideaArray);
 	localStorage.setItem('cardId', stringifiedArray);
 };
@@ -42,13 +52,17 @@ function addToLocalStorage(ideaArray) {
 function retrieveLocalStorage(ideaArray) {
 	var parsedArray = JSON.parse(localStorage.getItem(ideaArray));
 	//might need to return something
-	ideaCard(parsedArray);
-	console.log(parsedArray);
+	ideaArray = ideaCard(parsedArray);
+	return ideaArray;
+	// console.log(parsedArray);
 };
 
-(function(ideaArray) {
-	retrieveLocalStorage(ideaArray);
-	ideaCard();
+$(window).load(function() {
+	ideaArray = retrieveLocalStorage(ideaArray);
+	ideaCard(ideaArray);
+	console.log('hello iife');
+});
+
+
   // to rewrite cards to page on page reload
   // ideaCard(title, body)
-});
