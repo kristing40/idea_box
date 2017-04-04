@@ -30,20 +30,20 @@ On the application’s main page, a user should:
 
 When a user clicks “Save”:
 
-	* A new idea with the provided title and body should appear in the idea list.
-	* The text fields should be cleared and ready to accept a new idea.
-	* The page should not reload.
-	* The idea should be persisted. It should still be present upon reloading the page.
+* A new idea with the provided title and body should appear in the idea list.    
+* The text fields should be cleared and ready to accept a new idea.    
+* The page should not reload.    
+* The idea should be persisted. It should still be present upon reloading the page.    
 
 #### Deleting an existing idea
 
 When viewing the idea list:
 
-	* Each idea in the list should have a link or button to “Delete” (or 𝗫).
-	* Upon clicking “Delete”, the appropriate idea should be removed from the list.
-	* The page should not reload when an idea is deleted.
-	* The idea should be removed from localStorage.   
-	* It should not re-appear on next page load.
+* Each idea in the list should have a link or button to “Delete” (or 𝗫).
+* Upon clicking “Delete”, the appropriate idea should be removed from the list.
+* The page should not reload when an idea is deleted.
+* The idea should be removed from localStorage.   
+* It should not re-appear on next page load.
 
 #### Changing the quality of an idea   
 
