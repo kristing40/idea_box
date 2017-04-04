@@ -46,7 +46,6 @@ $('#display-area').on('click', '#downvote', function() {
 
 
 /**Functions**/
-
 create ideaCard(title, body) {
   either append or prepend card
   place title text and body text on card
