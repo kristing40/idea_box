@@ -43,7 +43,7 @@ function ideaCard(newIdea) {
 function addToLocalStorage(ideaArray) {
 	var stringifiedArray = JSON.stringify(ideaArray);
 	localStorage.setItem('cardId',stringifiedArray);
-  store uniqueId in var create unique id can use dateObj
-  stringify title and body text for localStorage
-  store title and body text in localStorage with unique id
+  // store uniqueId in var create unique id can use dateObj
+  // stringify title and body text for localStorage
+  // store title and body text in localStorage with unique id
 }

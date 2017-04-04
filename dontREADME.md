@@ -1,9 +1,9 @@
 ### Pseudo Code for idea-box
 
-/**Global Variable**/
+###Global Variable
 var ideaArray = [];
 
-/**Event Listeners**/
+####Event Listeners
 
 $('#save-btn').on('click', function() {
 
@@ -45,7 +45,7 @@ $('#display-area').on('click', '#downvote', function() {
 
 
 
-/**Functions**/
+####Functions
 create ideaCard(title, body) {
   either append or prepend card
   place title text and body text on card
