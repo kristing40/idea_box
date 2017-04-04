@@ -11,13 +11,7 @@ $('#save-btn').on('click', function() {
 	ideaCard(newIdea);
 	ideaArray.push(newIdea);
 	console.log(ideaArray);
-  //  a new idea with the provided title and body should appear in the $('#ouput-area') from this event listener
-  //  1. store title in variable from $('#title-input').val();
-  //  2. store body text in variable from $('#body-input').val();
-  // 2.5.    make an object
-  //     send object to global array
-  //  3. call ideaCard(title, body)
-  //  4. call localStorage(title, body)
+	addToLocalStorage(ideaArray);
   //  5. call clearFields(title, body)
   });
 
@@ -36,14 +30,25 @@ function ideaCard(newIdea) {
 		<p class="card-body-text" contenteditable="true">${newIdea.body}</p>
 		<div id="upvote" class="vote"></div>
 		<div id="downvote" class="vote"></div>
-		<p class="ranking">quality:</p>
+		<p class="ranking">quality:${newIdea.quality}</p>
 	</article>`)
-}
+};
 
 function addToLocalStorage(ideaArray) {
 	var stringifiedArray = JSON.stringify(ideaArray);
-	localStorage.setItem('cardId',stringifiedArray);
-  store uniqueId in var create unique id can use dateObj
-  stringify title and body text for localStorage
-  store title and body text in localStorage with unique id
-}
+	localStorage.setItem('cardId', stringifiedArray);
+};
+
+function retrieveLocalStorage(ideaArray) {
+	var parsedArray = JSON.parse(localStorage.getItem(ideaArray));
+	//might need to return something
+	ideaCard(parsedArray);
+	console.log(parsedArray);
+};
+
+(function(ideaArray) {
+	retrieveLocalStorage(ideaArray);
+	ideaCard();
+  // to rewrite cards to page on page reload
+  // ideaCard(title, body)
+});
