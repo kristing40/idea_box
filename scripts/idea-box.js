@@ -25,7 +25,7 @@ function CreateIdea(cardId, title, body, quality) {
 function ideaCard() {
 	$('#display-area').html('');
 	ideaArray.forEach(function(idea){
-		$('#display-area').append(`<article class="idea-card ${idea.cardId}">
+		$('#display-area').append(`<article id="${idea.cardId}" class="idea-card">
 		<h3 contenteditable="true">${idea.title}</h3>
 		<div id="delete-btn" class="vote"></div>
 		<p class="card-body-text" contenteditable="true">${idea.body}</p>
@@ -52,10 +52,17 @@ function retrieveLocalStorage() {
 };
 
 $('#output-area').on('click', '#delete-btn', function() {
-	$('idea-card').closest('.cardId').remove();
-  // page should not reload
-  // remove idea from localStorage
-  });
+	ideaArray = JSON.parse(localStorage.getItem('cardId'));
+	var deleteCard = $(this).closest('.idea-card').attr('id')
+	console.log(deleteCard);
+	//get that cards idCard number
+	//delete that card
+	ideaArray.removeItem($(this).closest('.idea-card').attr('id'))
+	//put array back in local storage
+	
+	//print all cards again
+	ideaCard();
+});
 
 $(window).on('load', function() {
 	retrieveLocalStorage();
