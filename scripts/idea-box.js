@@ -14,7 +14,6 @@ $('#save-btn').on('click', function() {
 	clearFields();
   });
 
-
 function CreateIdea(cardId, title, body, quality) {
 	this.cardId = cardId;
 	this.title = title;
@@ -47,29 +46,19 @@ function addToLocalStorage(ideaArray) {
 };
 
 function retrieveLocalStorage() {
-	ideaArray = JSON.parse(localStorage.getItem('cardId'));
+	ideaArray = JSON.parse(localStorage.getItem('cardId')) || [];
 	return ideaArray;
 };
 
 $('#output-area').on('click', '#delete-btn', function() {
+	var deleteCard = $(this).closest('.idea-card').attr('id');
 	ideaArray = JSON.parse(localStorage.getItem('cardId'));
-	var deleteCard = $(this).closest('.idea-card').attr('id')
-	console.log(deleteCard);
-	//get that cards idCard number
-	//delete that card
-	ideaArray.removeItem($(this).closest('.idea-card').attr('id'))
-	//put array back in local storage
-	
-	//print all cards again
+	ideaArray.splice(ideaArray.cardId = 'deleteCard', 1);
+	addToLocalStorage(ideaArray);
 	ideaCard();
 });
 
 $(window).on('load', function() {
 	retrieveLocalStorage();
 	ideaCard();
-	console.log('hello');
 });
-
-
-  // to rewrite cards to page on page reload
-  // ideaCard(title, body)
