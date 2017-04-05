@@ -23,9 +23,11 @@ $('#save-btn').on('click', function() {
 });
 
 $('#output-area').on('click', '#delete-btn', function() {
-    $('.idea-card').closest('#cardId').remove();
-    // page should not reload
-    // remove idea from localStorage
+	var deleteCard = $(this).closest('.idea-card').attr('id');
+	ideaArray = JSON.parse(localStorage.getItem('cardId'));
+	ideaArray.splice(ideaArray.cardId = 'deleteCard', 1);
+	addToLocalStorage(ideaArray);
+	ideaCard();
 });
 
 $('#display-area').on('click', '#upvote', function() {
@@ -82,11 +84,3 @@ function retrieveLocalStorage() {
 	ideaArray = JSON.parse(localStorage.getItem('cardId')) || [];
 	return ideaArray;
 };
-
-$('#output-area').on('click', '#delete-btn', function() {
-	var deleteCard = $(this).closest('.idea-card').attr('id');
-	ideaArray = JSON.parse(localStorage.getItem('cardId'));
-	ideaArray.splice(ideaArray.cardId = 'deleteCard', 1);
-	addToLocalStorage(ideaArray);
-	ideaCard();
-});
