@@ -22,9 +22,8 @@ $('#save-btn').on('click', function() {
     clearFields();
 });
 
-$('#display-area').on('click', '#delete-btn', function() {
-    $('.idea-card').remove();
-		console.log($(this));
+$('#output-area').on('click', '#delete-btn', function() {
+    $('.idea-card').closest('#cardId').remove();
     // page should not reload
     // remove idea from localStorage
 });
@@ -55,18 +54,18 @@ $(window).on('load', function() {
   /**FUNCTIONS**/
 
 function ideaCard() {
-	  $('#display-area').html('');
-	  ideaArray.forEach(function(idea) {
-	  $('#display-area').append(`
-			<article id="${idea.cardId}" class="idea-card ">
-				<h3 contenteditable="true">${idea.title}</h3>
-				<div id="delete-btn" class="vote"></div>
-				<p class="card-body-text" contenteditable="true">${idea.body}</p>
-				<div id="upvote" class="vote"></div>
-				<div id="downvote" class="vote"></div>
-				<p class="ranking">quality:<span id='rank'>${idea.quality}</span></p>
-			</article>`);
-	  });
+      $('#display-area').html('');
+      ideaArray.forEach(function(idea) {
+          $('#display-area').append(`
+		<article id="${idea.cardId}" class="idea-card ">
+			<h3 contenteditable="true">${idea.title}</h3>
+			<div id="delete-btn" class="vote"></div>
+			<p class="card-body-text" contenteditable="true">${idea.body}</p>
+			<div id="upvote" class="vote"></div>
+			<div id="downvote" class="vote"></div>
+			<p class="ranking">quality:<span id='rank'>${idea.quality}</span></p>
+      </article>`);
+		      });
   };
 
 function clearFields() {
@@ -80,10 +79,14 @@ function addToLocalStorage(ideaArray) {
 };
 
 function retrieveLocalStorage() {
-    ideaArray = JSON.parse(localStorage.getItem('cardId'));
-    return ideaArray;
+	ideaArray = JSON.parse(localStorage.getItem('cardId')) || [];
+	return ideaArray;
 };
 
-function findIdea () {
-
-}
+$('#output-area').on('click', '#delete-btn', function() {
+	var deleteCard = $(this).closest('.idea-card').attr('id');
+	ideaArray = JSON.parse(localStorage.getItem('cardId'));
+	ideaArray.splice(ideaArray.cardId = 'deleteCard', 1);
+	addToLocalStorage(ideaArray);
+	ideaCard();
+});
