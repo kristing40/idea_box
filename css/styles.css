@@ -36,6 +36,10 @@ h1,
 	resize: none;
 }
 
+.input-field,
+.input-field::placeholder {
+		color: #939598;
+}
 .input-field {
 	box-sizing: border-box;
 	width: 100%;
@@ -43,11 +47,9 @@ h1,
 	padding: 5px;
 	border: 1px solid #D1D3D4;
 	font-size: 16px;
-	color: #939598;
 }
 
 .input-field::placeholder {
-	color: #939598;
 	opacity: 0.5;
 }
 
