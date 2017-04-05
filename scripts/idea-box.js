@@ -9,9 +9,8 @@ $('#save-btn').on('click', function() {
 	var quality = "swill";
 	var newIdea = new CreateIdea(cardId, title, body, quality);
 	ideaArray.push(newIdea);
-	ideaCard(ideaArray);
-	// console.log(ideaArray);
 	addToLocalStorage(ideaArray);
+	ideaCard(ideaArray);
 	clearFields();
   });
 
@@ -23,7 +22,7 @@ function CreateIdea(cardId, title, body, quality) {
 	this.quality = quality;
 }
 
-function ideaCard(ideaArray) {
+function ideaCard() {
 	$('#display-area').html('');
 	ideaArray.forEach(function(idea){
 		$('#display-area').append(`<article class="idea-card ${idea.cardId}">
@@ -39,29 +38,29 @@ function ideaCard(ideaArray) {
 
 function clearFields() {
 	$('#title-input, #body-input').val("");
-  // page should be persisted on page reload
 }
 
 function addToLocalStorage(ideaArray) {
-	//clear local storage
 	localStorage.clear();
 	var stringifiedArray = JSON.stringify(ideaArray);
-
 	localStorage.setItem('cardId', stringifiedArray);
 };
 
-function retrieveLocalStorage(ideaArray) {
-	var parsedArray = JSON.parse(localStorage.getItem(ideaArray));
-	//might need to return something
-	ideaArray = ideaCard(parsedArray);
+function retrieveLocalStorage() {
+	ideaArray = JSON.parse(localStorage.getItem('cardId'));
 	return ideaArray;
-	// console.log(parsedArray);
 };
 
-$(window).load(function() {
-	ideaArray = retrieveLocalStorage(ideaArray);
-	ideaCard(ideaArray);
-	console.log('hello iife');
+$('#output-area').on('click', '#delete-btn', function() {
+	$('idea-card').closest('.cardId').remove();
+  // page should not reload
+  // remove idea from localStorage
+  });
+
+$(window).on('load', function() {
+	retrieveLocalStorage();
+	ideaCard();
+	console.log('hello');
 });
 
 

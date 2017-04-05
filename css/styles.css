@@ -126,6 +126,11 @@ h3,
 		margin: 0 auto;
 	}
 
+	#body-input,
+	#title-input {
+		height: 30px;
+	}
+
 	h1,
 	#idea-color {
 		margin: 10px 0;
