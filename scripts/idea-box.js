@@ -53,8 +53,8 @@ function retrieveLocalStorage() {
 
 $('#output-area').on('click', '#delete-btn', function() {
 	$('idea-card').closest('.cardId').remove();
-  page should not reload
-  remove idea from localStorage
+  // page should not reload
+  // remove idea from localStorage
   });
 
 $(window).on('load', function() {
