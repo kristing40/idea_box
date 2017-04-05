@@ -41,11 +41,10 @@ $('#display-area').on('click', '#upvote', function() {
 $('#display-area').on('click', '#downvote', function() {
     var $rank = $(this).parent().find('#rank');
     if ($rank.text() === "genius") {
-        $rank.text('
-            plausible ');
+        $rank.text('plausible');
         }
         else if ($rank.text() === "plausible") {
-            $#rank.text('swill');
+            $rank.text('swill');
         }
     });
 
@@ -53,6 +52,14 @@ $('#display-area').on('click', '#downvote', function() {
       retrieveLocalStorage();
       ideaCard();
   });
+
+
+function CreateIdea(cardId, title, body, quality) {
+	this.cardId = cardId;
+	this.title = title;
+	this.body = body;
+	this.quality = quality;
+}
 
 
   /**FUNCTIONS**/
@@ -68,10 +75,10 @@ function ideaCard() {
 			<div id="upvote" class="vote"></div>
 			<div id="downvote" class="vote"></div>
 			<p class="ranking">quality:<span id='rank'>${idea.quality}</span></p>
-		</article>`);
+      </article>`);
 		      });
   };
-
+                              
 function clearFields() {
     $('#title-input, #body-input').val("");
 }
@@ -83,6 +90,17 @@ function addToLocalStorage(ideaArray) {
 };
 
 function retrieveLocalStorage() {
-    ideaArray = JSON.parse(localStorage.getItem('cardId'));
-    return ideaArray;
+	ideaArray = JSON.parse(localStorage.getItem('cardId')) || [];
+	return ideaArray;
 };
+
+$('#output-area').on('click', '#delete-btn', function() {
+	var deleteCard = $(this).closest('.idea-card').attr('id');
+	ideaArray = JSON.parse(localStorage.getItem('cardId'));
+	ideaArray.splice(ideaArray.cardId = 'deleteCard', 1);
+	addToLocalStorage(ideaArray);
+	ideaCard();
+});
+
+
+  
