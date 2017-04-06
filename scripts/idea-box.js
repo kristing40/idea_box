@@ -23,25 +23,27 @@ $('#save-btn').on('click', function() {
 });
 
 $('#output-area').on('click', '#delete-btn', function() {
-    $('.idea-card').closest('#cardId').remove();
-    // page should not reload
-    // remove idea from localStorage
+		var deleteCard = $(this).closest('.idea-card').attr('id');
+		ideaArray = JSON.parse(localStorage.getItem('cardId'));
+		ideaArray.splice(ideaArray.cardId = 'deleteCard', 1);
+		addToLocalStorage(ideaArray);
+		ideaCard();
 });
 
 $('#display-area').on('click', '#upvote', function() {
     var $rank = $(this).parent().find('#rank');
-    if ($rank.text() === "swill") {
+    if ($rank.text() === 'swill') {
         $rank.text('plausible');
-    } else if ($rank.text() === "plausible") {
+    } else if ($rank.text() === 'plausible') {
         $rank.text('genius');
     }
 });
 
 $('#display-area').on('click', '#downvote', function() {
     var $rank = $(this).parent().find('#rank');
-    if ($rank.text() === "genius") {
+    if ($rank.text() === 'genius') {
         $rank.text('plausible');
-      } else if ($rank.text() === "plausible") {
+      } else if ($rank.text() === 'plausible') {
         	$rank.text('swill');
       }
 });
@@ -54,16 +56,16 @@ $(window).on('load', function() {
   /**FUNCTIONS**/
 
 function ideaCard() {
-      $('#display-area').html('');
-      ideaArray.forEach(function(idea) {
-          $('#display-area').append(`
-		<article id="${idea.cardId}" class="idea-card ">
-			<h3 contenteditable="true">${idea.title}</h3>
-			<div id="delete-btn" class="vote"></div>
-			<p class="card-body-text" contenteditable="true">${idea.body}</p>
-			<div id="upvote" class="vote"></div>
-			<div id="downvote" class="vote"></div>
-			<p class="ranking">quality:<span id='rank'>${idea.quality}</span></p>
+	  $('#display-area').html('');
+	  	ideaArray.forEach(function(idea) {
+	      $('#display-area').append(`
+			<article id="${idea.cardId}" class="idea-card ">
+				<h3 contenteditable="true">${idea.title}</h3>
+				<div id="delete-btn" class="vote"></div>
+				<p class="card-body-text" contenteditable="true">${idea.body}</p>
+				<div id="upvote" class="vote"></div>
+				<div id="downvote" class="vote"></div>
+				<p class="ranking">quality:<span id='rank'>${idea.quality}</span></p>
       </article>`);
 		      });
   };
@@ -82,11 +84,3 @@ function retrieveLocalStorage() {
 	ideaArray = JSON.parse(localStorage.getItem('cardId')) || [];
 	return ideaArray;
 };
-
-$('#output-area').on('click', '#delete-btn', function() {
-	var deleteCard = $(this).closest('.idea-card').attr('id');
-	ideaArray = JSON.parse(localStorage.getItem('cardId'));
-	ideaArray.splice(ideaArray.cardId = 'deleteCard', 1);
-	addToLocalStorage(ideaArray);
-	ideaCard();
-});
