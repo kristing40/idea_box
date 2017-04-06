@@ -1,13 +1,15 @@
 /**GLOBAL VARIABLE**/
 var ideaArray = [];
 
+
+
 /**CONSTRUCTOR FUNCTION**/
 function CreateIdea(cardId, title, body, quality) {
     this.cardId = cardId;
     this.title = title;
     this.body = body;
     this.quality = quality;
-}
+};
 
 /**EVENT LISTENERS**/
 $('#save-btn').on('click', function() {
@@ -25,27 +27,31 @@ $('#save-btn').on('click', function() {
 $('#output-area').on('click', '#delete-btn', function() {
 		var deleteCard = $(this).closest('.idea-card').attr('id');
 		ideaArray = JSON.parse(localStorage.getItem('cardId'));
-		ideaArray.splice(ideaArray.cardId = 'deleteCard', 1);
-		addToLocalStorage(ideaArray);
+    ideaArray.splice(ideaArray.cardId = 'deleteCard', 1);
+    addToLocalStorage(ideaArray);
 		ideaCard();
 });
 
 $('#display-area').on('click', '#upvote', function() {
+    var storeVoteId = $(this).closest('.idea-card').attr('id');
     var $rank = $(this).parent().find('#rank');
     if ($rank.text() === 'swill') {
         $rank.text('plausible');
     } else if ($rank.text() === 'plausible') {
         $rank.text('genius');
-    }
+      }
+      //  updateArray(storeVoteId, ideaArray, $rank);
 });
 
 $('#display-area').on('click', '#downvote', function() {
+    var storeVoteId = $(this).closest('.idea-card').attr('id');
     var $rank = $(this).parent().find('#rank');
     if ($rank.text() === 'genius') {
         $rank.text('plausible');
       } else if ($rank.text() === 'plausible') {
         	$rank.text('swill');
       }
+    //  updateArray(storeVoteId, ideaArray, $rank);
 });
 
 $(window).on('load', function() {
@@ -53,8 +59,8 @@ $(window).on('load', function() {
       ideaCard();
 });
 
-  /**FUNCTIONS**/
 
+  /**FUNCTIONS**/
 function ideaCard() {
   $('#display-area').html('');
   	ideaArray.forEach(function(idea) {
@@ -72,7 +78,7 @@ function ideaCard() {
 
 function clearFields() {
     $('#title-input, #body-input').val("");
-}
+};
 
 function addToLocalStorage(ideaArray) {
     localStorage.clear();
@@ -84,3 +90,15 @@ function retrieveLocalStorage() {
   	ideaArray = JSON.parse(localStorage.getItem('cardId')) || [];
   	return ideaArray;
 };
+
+// function updateArray(storeVoteId, ideaArray, $rank) {
+//   // ideaArray = JSON.parse(localStorage.getItem('cardId'));
+//   var quality = $(this).closest('.idea-card').find('#rank')
+//   console.log(ideaArray.find('#rank'));
+//
+//   ideaArray.quality = $rank.text();
+//  if(storeVoteId === ideaArray.cardId) {
+//   var upDateRank = JSON.stringify(ideaArray);
+//   }
+
+// };
